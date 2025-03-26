@@ -1,0 +1,136 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #87ceeb, #4682b4);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  color: #4682b4;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.search-bar {
+  margin: 20px 0;
+}
+
+.search-bar input {
+  padding: 10px;
+  width: 70%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #4682b4, #87ceeb);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.search-bar button:hover {
+  background: linear-gradient(45deg, #5a9bd4, #add8e6);
+}
+
+.weather-display {
+  margin: 20px 0;
+}
+
+.weather-display h2 {
+  color: #333;
+  margin: 10px 0;
+}
+
+.weather-display p {
+  color: #666;
+  margin: 5px 0;
+}
+
+.weather-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.current-weather,
+.forecast {
+  width: 48%;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.weather-info i {
+  font-size: 24px;
+  margin-left: 5px;
+  color: #ffd700;
+}
+
+.forecast-grid p {
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.forecast-grid p:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.loader {
+  font-size: 18px;
+  color: #4682b4;
+  display: none;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+footer {
+  margin-top: 20px;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .weather-info {
+    flex-direction: column;
+  }
+  .current-weather,
+  .forecast {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
