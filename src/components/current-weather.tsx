@@ -17,7 +17,7 @@ export const CurrentWeather = () => {
       </p>
 
       <p>湿度: {realtime.humidity}%</p>
-      <p>降水概率: {realtime.precip}</p>
+      <p>降水概率: {Math.round(parseFloat(realtime.precip) * 100)} %</p>
     </div>
   );
 };
