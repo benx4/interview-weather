@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  width: 40vw;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -42,15 +42,16 @@ header h1 {
   font-size: 16px;
 }
 
-.search-bar button {
+.search-bar .button {
   padding: 10px 20px;
-  background: linear-gradient(45deg, #4682b4, #87ceeb);
+  background: linear-gradient(45deg, #4682b4, #223e49);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   transition: background 0.3s ease;
+  /* box-shadow: 0px 4px 4px 1px #333; */
 }
 
 .search-bar button:hover {
@@ -124,6 +125,16 @@ header h1 {
   justify-content: center;
 }
 
+.weather-icon.sm {
+  width: 3em;
+  height: 3em;
+}
+.weather-icon.sm > img {
+  width: 2em;
+  height: 2em;
+  object-fit: contain;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -139,6 +150,9 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .container {
+    width: 80vw;
+  }
   .search-bar {
     flex-direction: column;
     justify-items: center;

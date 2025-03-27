@@ -5,7 +5,7 @@ import { keywordAtom } from "../store";
 export const SearchBox = () => {
   const [keyword, setKeyword] = useRecoilState(keywordAtom);
 
-  const { fetchRealtime, fetchForcast } = useCallbacks();
+  const { fetchForcast } = useCallbacks();
 
   return (
     <div className="search-bar">
@@ -17,14 +17,14 @@ export const SearchBox = () => {
           setKeyword(ev.target.value);
         }}
       />
-      <button
+      <div
+        className="button"
         onClick={() => {
-          fetchRealtime(keyword);
           fetchForcast(keyword);
         }}
       >
         Search
-      </button>
+      </div>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import moment from "moment";
 function App() {
   const isLoading = useRecoilValue(loadingStatusSelector);
   const today = moment(Date.now()).format("YYYY年MM月DD日");
+
   return (
     <div className="container">
       <header>
