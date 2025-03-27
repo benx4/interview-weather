@@ -94,12 +94,22 @@ header h1 {
   color: #ffd700;
 }
 
-.forecast-grid p {
+.forecast-grid > * {
+  display: block;
+}
+.forecast-grid > * + * {
+  margin-top: 0.5em;
+}
+
+.forecast-grid .item {
   background: #fff;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.item > * + * {
+  margin-top: 0.5em !important;
 }
 
 .forecast-grid p:hover {
@@ -116,6 +126,7 @@ header h1 {
 
 .weather-icon {
   margin: 0 auto !important;
+  margin-top: 0.5em !important;
   display: flex;
   align-items: center;
   width: 5em;
@@ -148,7 +159,91 @@ footer {
   margin-top: 20px;
   color: #666;
 }
+footer > i {
+  font-size: 1em;
+  color: red;
+  font-weight: bold;
+  font-style: normal;
+}
+.loading {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.loading > img {
+  width: 8em;
+  animation-name: sun-bouncing;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  opacity: 0.9;
+}
 
+.warn-box {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.warn-box > .content {
+  width: 60%;
+  height: 10em;
+  border-radius: 1em;
+  background-color: white;
+}
+
+.warn-box > .content > header {
+  position: relative;
+  background-color: rgb(228, 81, 106);
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  font-weight: bold;
+  color: white;
+  padding: 0.5em;
+}
+.warn-box > .content > header > i {
+  font-style: normal;
+  position: absolute;
+  content: "X";
+  right: 1em;
+  top: 0.5em;
+}
+
+.warn-box > .content > main {
+  height: 100%;
+  width: 100%;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  padding: 0.5em;
+}
+
+@keyframes sun-bouncing {
+  0% {
+    width: 8em;
+  }
+  50% {
+    width: 7em;
+  }
+  100% {
+    width: 8em;
+  }
+}
 @media (max-width: 600px) {
   .container {
     width: 80vw;

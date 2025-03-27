@@ -18,7 +18,7 @@ export type RealtimeWeather = {
   ];
 };
 export type DailyWeather = {
-  image:string;
+  image: string;
   date: string;
   text_day: string;
   code_day: string;

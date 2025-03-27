@@ -12,6 +12,7 @@ export const weatherStore = atom<WeatherState>({
       temperature: "--",
     },
     isLoading: false,
+
     forcast: [],
   },
 });
@@ -19,6 +20,16 @@ export const weatherStore = atom<WeatherState>({
 export const keywordAtom = atom<string>({
   key: "keyword",
   default: "shanghai",
+});
+
+export const weatherId = atom<number>({
+  key: "weather_id",
+  default: 0,
+});
+
+export const warnMessageAtom = atom({
+  key: "warn_message",
+  default: "",
 });
 
 export const realtimeWeatherSelector = selector({
@@ -40,11 +51,12 @@ export const firstWeatherForcastSelector = selector<DailyWeather>({
   key: "today_weather",
   get: ({ get }) => {
     const weathers = get(weatherStore).forcast;
-    return !weathers || weathers.length === 0 ? defaultToday : weathers[0];
+    const id = get(weatherId);
+    return !weathers || weathers.length === 0 ? defaultToday : weathers[id];
   },
 });
 
-export const loadingStatusSelector = selector({
+export const loadingStatusSelector = selector<boolean>({
   key: "loading_state",
   get: ({ get }) => {
     return get(weatherStore).isLoading;

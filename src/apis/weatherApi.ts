@@ -16,14 +16,14 @@ export async function getRealTimeWeather(city: string) {
   return result;
 }
 
-export async function getForcastWeather(city: string): Promise<DailyWeather[]> {
+export async function getForcastWeather(
+  city: string
+): Promise<DailyWeather[] | never> {
   const response = await axios.get<ForcastWeather>(
     apiUrlMapping["weatherForcast3Days"]
       .replace("|api-key|", privateKey)
       .replace("|city|", city)
   );
-
   const result = response.data.results[0].daily;
-  console.log("result::", result);
   return result;
 }
