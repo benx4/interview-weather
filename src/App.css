@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background: linear-gradient(to bottom, #87ceeb, #4682b4);
   margin: 0;
-  padding: 0;
+  padding: 2em 0;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -10,7 +10,6 @@ body {
 }
 
 .container {
-  width: 90%;
   max-width: 800px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 15px;
@@ -30,11 +29,14 @@ header h1 {
 
 .search-bar {
   margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
 }
 
 .search-bar input {
   padding: 10px;
-  width: 70%;
+  flex: 1;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
@@ -66,18 +68,19 @@ header h1 {
 
 .weather-display p {
   color: #666;
-  margin: 5px 0;
+  margin: 20px 0;
 }
 
 .weather-info {
   display: flex;
+  gap: 0.5em;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .current-weather,
 .forecast {
-  width: 48%;
+  flex: 1;
   background: #f9f9f9;
   padding: 15px;
   border-radius: 5px;
@@ -110,6 +113,17 @@ header h1 {
   animation: spin 1s linear infinite;
 }
 
+.weather-icon {
+  margin: 0 auto !important;
+  display: flex;
+  align-items: center;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  background-color: darkblue;
+  justify-content: center;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -125,12 +139,15 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .search-bar {
+    flex-direction: column;
+    justify-items: center;
+    align-content: center;
+  }
+  .search-bar > * + * {
+    margin-top: 0.5em;
+  }
   .weather-info {
     flex-direction: column;
-  }
-  .current-weather,
-  .forecast {
-    width: 100%;
-    margin-bottom: 20px;
   }
 }

@@ -1,60 +1,40 @@
+import { useRecoilValue } from "recoil";
 import "./App.css";
+import { CurrentWeather } from "./components/current-weather";
+import { SearchBox } from "./components/search-box";
+import { WeatherForcast } from "./components/weather-forcast";
+import { loadingStatusSelector } from "./store";
+import moment from "moment";
 
 function App() {
+  const isLoading = useRecoilValue(loadingStatusSelector);
+  const today = moment(Date.now()).format("YYYY年MM月DD日");
   return (
     <div className="container">
       <header>
-        <h1>Weather Forecast</h1>
+        <h1>天气预报</h1>
       </header>
       <main>
-        <div className="search-bar">
-          <input
-            type="text"
-            id="location-input"
-            placeholder="Enter city name..."
-          />
-          <button>Search</button>
-        </div>
+        <SearchBox />
         <div className="weather-display">
-          <div className="loader" id="loader">
-            Loading...
-          </div>
-          <h2 id="city-name">City Name</h2>
-          <p id="date">Date</p>
-          <div className="weather-info">
-            <div className="current-weather">
-              <h3>Current Weather</h3>
-              <p id="temp">Temperature: --°C</p>
-              <p id="condition">Condition: --</p>
-              <p id="humidity">Humidity: --%</p>
+          {isLoading ? (
+            <div className="loader" id="loader">
+              Loading...
             </div>
-            <div className="forecast">
-              <h3>5-Day Forecast</h3>
-              <div className="forecast-grid" id="forecast-grid">
-                <p>
-                  Day 1: 26°C, Sunny <i className="fas fa-sun"></i>
-                </p>
-                <p>
-                  Day 2: 24°C, Cloudy <i className="fas fa-cloud"></i>
-                </p>
-                <p>
-                  Day 3: 22°C, Rainy{" "}
-                  <i className="fas fa-cloud-showers-heavy"></i>
-                </p>
-                <p>
-                  Day 4: 23°C, Partly Cloudy{" "}
-                  <i className="fas fa-cloud-sun"></i>
-                </p>
-                <p>
-                  Day 5: 25°C, Sunny <i className="fas fa-sun"></i>
-                </p>
+          ) : (
+            <>
+              <h2 id="city-name">City Name</h2>
+              <p id="date">{today}</p>
+              <div className="weather-info">
+                <CurrentWeather />
+                <WeatherForcast />
               </div>
-            </div>
-          </div>
+            </>
+          )}
         </div>
       </main>
       <footer>
-        <p>© 2025 Weather App by xAI</p>
+        <p>© 2025 Weather App by Benjamin</p>
       </footer>
     </div>
   );
